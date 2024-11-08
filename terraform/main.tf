@@ -8,5 +8,5 @@ terraform {
 }
 
 provider "aws" {
-  region = "eu-west-2"  # Specify your desired AWS region here
+  region = "eu-west-2" # Specify your desired AWS region here
 }
