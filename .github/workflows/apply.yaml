@@ -1,53 +1,41 @@
-name: 'Terraform'
+name: 'Terraform Apply'
 
 on:
-   push:
-     branches: [ 'main' ]
-   pull_request:
+  workflow_run:
+    workflows: ['Terraform Plan']  # Triggers after 'Terraform Plan' workflow completes
+    types:
+      - completed
 
 permissions:
-  id-token: write
   contents: read
-
+  id-token: write
 
 jobs:
-  terraform:
-    name: 'Terraform'
+  terraform_apply:
+    name: 'Terraform Apply'
     runs-on: ubuntu-latest
-    environment: production
+    environment: development
+
     defaults:
       run:
         shell: bash
         working-directory: ./terraform
 
     steps:
-    
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v4
-      with:
-        role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
-        aws-region: eu-west-2
+      - name: Checkout the repository
+        uses: actions/checkout@v4
 
-    # Checkout the repository to the GitHub Actions runner
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Configure AWS credentials with OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
+          aws-region: ${{ secrets.AWS_REGION }}
 
-    # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v3
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
 
-    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-    - name: Terraform Init
-      run: terraform init
+      - name: Terraform Init
+        run: terraform init
 
-    # Checks that all Terraform configuration files adhere to a canonical format
-    - name: Terraform Format
-      run: terraform fmt -check
-
-    # Generates an execution plan for Terraform
-    - name: Terraform Plan
-      run: terraform plan -input=false
-
-    # Apply the Configuration
-    - name: Terraform Apply
-      run: terraform apply -input=false -auto-approve
+      - name: Terraform Apply
+        run: terraform apply -input=false -auto-approve
