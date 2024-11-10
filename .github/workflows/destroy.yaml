@@ -1,0 +1,33 @@
+name: 'Terraform Destroy'
+
+on:
+  workflow_dispatch:  # Allows the workflow to be triggered manually
+
+permissions:
+  contents: read
+  id-token: write  # For OIDC
+
+jobs:
+  terraform_destroy:
+    name: 'Manual Terraform Destroy'
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Configure AWS credentials with OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Destroy
+        run: terraform destroy -no-color -auto-approve

@@ -26,3 +26,23 @@ OIDC
 │   ├── monitoring                         # Monitoring resources (Grafana and Prometheus)
 │       ├── grafana_prometheus.tf          # Grafana and Prometheus EC2 configuration
 ├── README.md                              # Documentation on project setup and configuration
+
+
+
+How to fmt terrform code:
+
+Navigate to your Terraform directory:
+
+```bash
+cd path/to/your/terraform/directory
+```
+
+Run the formatting command:
+```bash
+terraform fmt
+```
+
+You can also add -recursive to format all files in subdirectories:
+```bash
+terraform fmt -recursive
+```
