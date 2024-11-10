@@ -1,4 +1,4 @@
-name: 'Terraform Plan with Format Check and Fix'
+name: 'Terraform Plan/Format'
 
 on:
   pull_request:
@@ -51,4 +51,4 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan
-        run: terraform plan -no-color -out=plan.out
+        run: terraform plan -no-color -var="region=${{ secrets.AWS_REGION }}" -out=plan.out
