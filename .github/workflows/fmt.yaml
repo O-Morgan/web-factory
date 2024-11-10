@@ -1,0 +1,54 @@
+name: 'Terraform Plan with Format Check and Fix'
+
+on:
+  pull_request:
+    branches:
+      - '**'
+
+permissions:
+  contents: write  # Required to push changes to the pull request branch
+  id-token: write  # Required for OIDC auth
+
+jobs:
+  terraform:
+    name: 'Terraform Fmt Check and Plan'
+    runs-on: ubuntu-latest
+    environment: production
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./terraform
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      # Step 1: Terraform Format Check and Fix if Needed
+      - name: Terraform Format Check
+        id: fmt_check
+        run: terraform fmt -check
+        continue-on-error: true
+
+      - name: Terraform Format and Commit Changes
+        if: steps.fmt_check.outcome == 'failure'
+        run: |
+          terraform fmt -recursive
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git add .
+          git commit -m "[Terraform Fmt] Automated Terraform format correction"
+          git push
+
+      # Step 2: Plan after formatting check/fix
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: terraform plan -no-color -out=plan.out
