@@ -46,3 +46,5 @@ You can also add -recursive to format all files in subdirectories:
 ```bash
 terraform fmt -recursive
 ```
+
+action plan file structure

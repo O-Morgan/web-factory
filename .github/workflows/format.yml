@@ -1,4 +1,4 @@
-name: 'Terraform Format Check'
+name: Terraform Format
 
 on:
   pull_request:
