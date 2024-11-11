@@ -1,0 +1,6 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"  # The directory where dependabot checks for updates (root in this case)
+    schedule:
+      interval: "weekly"  # Check for updates every week
