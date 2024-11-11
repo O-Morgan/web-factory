@@ -47,4 +47,4 @@ You can also add -recursive to format all files in subdirectories:
 terraform fmt -recursive
 ```
 
-action plan file structure
+action plan file structure - if action syntax error the tell tail sign is the action will sit witht the full file path extension
