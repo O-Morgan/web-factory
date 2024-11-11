@@ -16,7 +16,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./terraform  # Set to the directory where main.tf is located
+        working-directory: ./terraform  # Set to directory where main.tf is located
 
     steps:
       - name: Checkout the repository
@@ -31,8 +31,11 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
-      - name: Terraform Init
-        run: terraform init
+      - name: Initialize Terraform
+        run: terraform init -no-color -input=false -lock=false
+
+      - name: Refresh State (Optional)
+        run: terraform refresh -input=false
 
       - name: Terraform Destroy
         run: terraform destroy -no-color -auto-approve
