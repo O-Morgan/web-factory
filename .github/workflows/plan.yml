@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   terraform:
-    name: 'Terraform Fmt Check and Plan'
+    name: 'Terraform Plan'
     runs-on: ubuntu-latest
     environment: production
 
@@ -26,21 +26,6 @@ jobs:
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
-
-      - name: Terraform Format Check
-        id: fmt_check
-        run: terraform fmt -check
-        continue-on-error: true
-
-      - name: Terraform Format and Commit Changes
-        if: steps.fmt_check.outcome == 'failure'
-        run: |
-          terraform fmt -recursive
-          git config --global user.name "${{ github.actor }}"
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          git add .
-          git commit -m "[Terraform Fmt] Automated Terraform format correction"
-          git push
 
       - name: Configure AWS credentials with OIDC
         uses: aws-actions/configure-aws-credentials@v4
