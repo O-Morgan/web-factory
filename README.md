@@ -48,3 +48,5 @@ terraform fmt -recursive
 ```
 
 action plan file structure - if action syntax error the tell tail sign is the action will sit witht the full file path extension
+
+git tag -d <tag-name>
