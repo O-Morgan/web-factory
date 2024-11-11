@@ -2,7 +2,7 @@ name: Terraform Apply
 
 on:
   workflow_run:
-    workflows: ['Terraform Plan']  # Triggers after 'Terraform Plan' workflow completes
+    workflows: ['Terraform Plan']
     types:
       - completed
 
@@ -29,7 +29,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
-          aws-region: eu-west-2  # Matches the default region in variables.tf but isn't terraform so either set as a GitHub secret or specify the actual region
+          aws-region: eu-west-2
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
@@ -38,4 +38,4 @@ jobs:
         run: terraform init
 
       - name: Terraform Apply
-        run: terraform apply -input=false -auto-approve -var="region=eu-west-2"
+        run: terraform apply -input=false -auto-approve
