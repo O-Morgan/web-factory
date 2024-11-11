@@ -29,7 +29,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
-           aws-region: eu-west-2  # Matches the default region in variables.tf but isn't terraform so either set as a GitHub secret or specify the actual region
+          aws-region: eu-west-2  # Matches the default region in variables.tf but isn't terraform so either set as a GitHub secret or specify the actual region
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
