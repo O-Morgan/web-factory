@@ -1,6 +1,7 @@
-module "networking" {
-  source = "./terraform/networking" # Path to your nested configuration
+# /workspaces/web-factory/terraform/main.tf
 
-  # Pass required variables to the module
+module "networking" {
+  source = "./networking"  # Relative path from main.tf within the terraform directory
   region = var.region
 }
+
