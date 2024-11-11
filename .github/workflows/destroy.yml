@@ -13,21 +13,26 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
 
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./terraform  # Set to the directory where main.tf is located
+
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v4
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
 
       - name: Configure AWS credentials with OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
-          aws-region: eu-west-2  # Correctly indented to align with `role-to-assume`
+          aws-region: eu-west-2
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
         run: terraform init
 
       - name: Terraform Destroy
-        run: terraform destroy -no-color -var="region=eu-west-2" -auto-approve
+        run: terraform destroy -no-color -auto-approve
