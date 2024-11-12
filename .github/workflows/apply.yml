@@ -2,12 +2,12 @@ name: Terraform Apply
 
 on:
   workflow_run:
-    workflows: ['Terraform Plan']
+    workflows: ["Terraform Plan"]
     types:
       - completed
 
 permissions:
-  contents: read
+  contents: write
   id-token: write
 
 jobs:
@@ -25,17 +25,22 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v4
 
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
       - name: Configure AWS credentials with OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
           aws-region: eu-west-2
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-
-      - name: Terraform Init
+      - name: Initialize Terraform
+        env:
+          TF_CLOUD_TOKEN: ${{ secrets.TF_CLOUD_TOKEN }}
         run: terraform init
 
       - name: Terraform Apply
-        run: terraform apply -input=false -auto-approve
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        env:
+          TF_CLOUD_TOKEN: ${{ secrets.TF_CLOUD_TOKEN }}
+        run: terraform apply -no-color -auto-approve plan.out
