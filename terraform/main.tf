@@ -11,7 +11,6 @@ module "networking" {
   web_server_port      = var.web_server_port
 }
 
-
 module "compute" {
   source                = "./compute"
   vpc_id                = module.networking.wf_vpc_id
