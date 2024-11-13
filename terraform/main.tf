@@ -14,8 +14,8 @@ module "networking" {
 module "compute" {
   source                = "./compute"
   vpc_id                = module.networking.wf_vpc_id
-  public_subnets        = module.networking.wf_public_subnet_ids  # Corrected argument name
-  private_subnets       = module.networking.wf_private_subnet_ids # Corrected argument name
+  public_subnet_ids     = module.networking.wf_public_subnet_ids  # Aligned variable name
+  private_subnet_ids    = module.networking.wf_private_subnet_ids # Aligned variable name
   alb_security_group_id = module.networking.wf_alb_sg_id
   web_security_group_id = module.networking.wf_web_sg_id
 
