@@ -1,3 +1,5 @@
+# main.tf
+
 module "networking" {
   source               = "./networking"
   vpc_cidr             = var.vpc_cidr
@@ -9,4 +11,22 @@ module "networking" {
   allowed_http_cidr    = var.allowed_http_cidr
   allowed_https_cidr   = var.allowed_https_cidr
   web_server_port      = var.web_server_port
+}
+
+module "compute" {
+  source                = "./compute"
+  vpc_id                = module.networking.vpc_id
+  public_subnets        = module.networking.public_subnets
+  private_subnets       = module.networking.private_subnets
+  alb_security_group_id = module.networking.alb_security_group_id
+  web_security_group_id = module.networking.web_security_group_id
+
+  instance_type         = var.instance_type
+  ami_id                = var.ami_id
+  min_instance_count    = var.min_instance_count
+  max_instance_count    = var.max_instance_count
+  key_name              = var.key_name
+  domain_name           = var.domain_name
+  hosted_zone_id        = var.hosted_zone_id
+  certificate_arn       = var.certificate_arn
 }

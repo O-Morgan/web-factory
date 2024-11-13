@@ -1,11 +1,6 @@
-# Root-level variables.tf
+# Root variables.tf
 
-variable "region" {
-  description = "AWS region for the provider"
-  type        = string
-  default     = "eu-west-2"
-}
-
+# Networking variables
 variable "vpc_cidr" {
   description = "The CIDR block for the VPC"
   type        = string
@@ -30,7 +25,7 @@ variable "availability_zones" {
   default     = ["eu-west-2a", "eu-west-2b"]
 }
 
-# Additional variables for ports, CIDR blocks, etc.
+# Security Group and Access
 variable "http_port" {
   description = "HTTP port for ALB"
   type        = number
@@ -59,4 +54,53 @@ variable "web_server_port" {
   description = "Port for web server traffic from ALB"
   type        = number
   default     = 80
+}
+
+# Compute variables
+variable "instance_type" {
+  description = "Instance type for EC2 instances"
+  type        = string
+  default     = "t2.micro"
+}
+
+variable "ami_id" {
+  description = "AMI ID for EC2 instances"
+  type        = string
+  default     = "ami-0e8d228ad90af673b"
+}
+
+variable "min_instance_count" {
+  description = "Minimum number of instances in the Auto Scaling group"
+  type        = number
+  default     = 2
+}
+
+variable "max_instance_count" {
+  description = "Maximum number of instances in the Auto Scaling group"
+  type        = number
+  default     = 4
+}
+
+variable "key_name" {
+  description = "Key pair name for EC2 instances"
+  type        = string
+  default     = "wf_web_server_key_pair"
+}
+
+# Route 53 and SSL
+variable "domain_name" {
+  description = "Domain name for Route 53"
+  type        = string
+  default     = "infra-owen-morgan.com"
+}
+
+variable "hosted_zone_id" {
+  description = "Hosted zone ID for Route 53"
+  type        = string
+  default     = "Z09823381091ASFSLUHFE"
+}
+
+variable "certificate_arn" {
+  description = "Certificate ARN for SSL"
+  type        = string
 }
