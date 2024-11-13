@@ -61,3 +61,6 @@ https://developer.hashicorp.com/terraform/tutorials/aws-get-started/aws-remote
 updated terraform backend and OIDC access
 
 update
+
+fmt all tf files
+terraform fmt -recursive
