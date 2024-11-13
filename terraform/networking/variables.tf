@@ -20,7 +20,6 @@ variable "availability_zones" {
   type        = list(string)
 }
 
-# Additional variables, if needed
 variable "http_port" {
   description = "HTTP port for ALB"
   type        = number
