@@ -59,7 +59,4 @@ variable "certificate_arn" {
   description = "Certificate ARN for SSL"
   type        = string
 }
-variable "public_subnet_ids" {
-  description = "List of public subnet IDs for ALB"
-  type        = list(string)
-}
+
