@@ -31,9 +31,9 @@ module "compute" {
   ami_id             = var.ami_id
   min_instance_count = var.min_instance_count
   max_instance_count = var.max_instance_count
-  key_name           = var.key_name
-  domain_name        = var.domain_name
-  hosted_zone_id     = var.hosted_zone_id
-  certificate_arn    = var.certificate_arn
+  #key_name           = var.key_name
+  domain_name     = var.domain_name
+  hosted_zone_id  = var.hosted_zone_id
+  certificate_arn = var.certificate_arn
   #public_key         = var.public_key # Ensure public_key is passed to compute module
 }
