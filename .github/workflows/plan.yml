@@ -36,5 +36,5 @@ jobs:
         run: terraform init -no-color -input=false
 
       - name: Terraform Plan
-        run: terraform plan -no-color -out=plan.out
+        run: terraform plan -no-color
         id: terraform_plan
