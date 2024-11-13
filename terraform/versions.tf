@@ -1,9 +1,8 @@
 terraform {
-  required_version = "~> 1.9.8"
   backend "s3" {
-    bucket         = "2345-webfactory-tf-backend-2345"
+    bucket         = "2345-webfactory-tf-backend-2345"  # Ensure this is the correct S3 bucket name
     key            = "terraform.tfstate"
-    region         = "eu-west-2"
-    dynamodb_table = "WebFactoryTerraformLocks"
+    region         = "eu-west-2"  # Updated region to match your AWS setup
+    dynamodb_table = "WebfactoryTerraformLocks"  # Correct DynamoDB table name
   }
 }
