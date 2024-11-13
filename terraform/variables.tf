@@ -113,3 +113,8 @@ variable "certificate_arn" {
   type        = string
   default     = ""
 }
+
+variable "public_key" {
+  description = "Public SSH key for EC2 instances"
+  type        = string
+}
