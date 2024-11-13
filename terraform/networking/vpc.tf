@@ -5,7 +5,8 @@ resource "aws_vpc" "wf_main_vpc" {
   tags = {
     Name = "WF_Main_VPC"
   }
-# tfsec:ignore:aws-ec2-require-vpc-flow-logs-for-all-vpcs
+
+  # tfsec:ignore:aws-ec2-require-vpc-flow-logs-for-all-vpcs
 }
 
 resource "aws_subnet" "wf_public_subnet_1" {
