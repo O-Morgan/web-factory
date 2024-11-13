@@ -46,7 +46,6 @@ resource "aws_route53_record" "root" {
 
 # Wait for ACM certificate validation
 resource "aws_acm_certificate_validation" "wf_certificate_validation" {
-  description             = "Validation for ACM certificate"
   certificate_arn         = aws_acm_certificate.wf_certificate.arn
   validation_record_fqdns = [for record in aws_route53_record.acm_validation : record.fqdn]
 }

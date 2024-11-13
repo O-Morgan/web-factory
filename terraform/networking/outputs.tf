@@ -8,3 +8,7 @@ output "wf_public_subnet_ids" {
   value       = [aws_subnet.wf_public_subnet_1.id, aws_subnet.wf_public_subnet_2.id]
 }
 
+output "wf_web_sg_id" {
+  description = "ID of the Web Server Security Group"
+  value       = aws_security_group.wf_web_sg.id
+}
