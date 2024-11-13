@@ -1,6 +1,5 @@
 # ACM Certificate for HTTPS on ALB
 resource "aws_acm_certificate" "wf_certificate" {
-  description               = "ACM certificate for securing ${var.domain_name} and SANs"
   domain_name               = var.domain_name
   validation_method         = "DNS"
   subject_alternative_names = ["www.${var.domain_name}"]
@@ -29,8 +28,8 @@ resource "aws_route53_record" "www" {
   name        = "www"
   type        = "A"
   alias {
-    name                   = aws_lb.wf_alb.dns_name
-    zone_id                = aws_lb.wf_alb.zone_id
+    name                   = var.alb_dns_name  # Updated to use variable
+    zone_id                = var.alb_zone_id   # Updated to use variable
     evaluate_target_health = true
   }
 }
@@ -42,8 +41,8 @@ resource "aws_route53_record" "root" {
   name        = ""
   type        = "A"
   alias {
-    name                   = aws_lb.wf_alb.dns_name
-    zone_id                = aws_lb.wf_alb.zone_id
+    name                   = var.alb_dns_name  # Updated to use variable
+    zone_id                = var.alb_zone_id   # Updated to use variable
     evaluate_target_health = true
   }
 }

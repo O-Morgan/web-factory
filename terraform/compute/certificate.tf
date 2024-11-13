@@ -1,6 +1,5 @@
 # ACM Certificate for HTTPS on ALB
 resource "aws_acm_certificate" "wf_certificate" {
-  description               = "ACM certificate for securing infra-owen-morgan.com and www.infra-owen-morgan.com with HTTPS"
   domain_name               = "infra-owen-morgan.com"
   validation_method         = "DNS"
   subject_alternative_names = ["www.infra-owen-morgan.com"]

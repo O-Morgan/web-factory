@@ -1,7 +1,6 @@
 # compute/loadbalancer.tf
 
 resource "aws_lb" "wf_alb" {
-  description        = "Application Load Balancer for web servers"
   name               = "wf-alb"
   internal           = false
   load_balancer_type = "application"
@@ -9,6 +8,8 @@ resource "aws_lb" "wf_alb" {
   subnets            = var.public_subnet_ids
 
   enable_deletion_protection = false
+  drop_invalid_header_fields = true # Drop invalid headers
+
   tags = {
     Name = "WF_ALB"
   }
