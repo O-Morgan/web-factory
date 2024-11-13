@@ -1,8 +1,8 @@
 module "compute" {
   source                = "./compute"
   vpc_id                = module.networking.wf_vpc_id
-  public_subnets        = module.networking.public_subnets # align with compute
-  private_subnets       = module.networking.private_subnets # align with compute
+  public_subnet_ids     = module.networking.public_subnet_ids # revert to match networking output
+  private_subnet_ids    = module.networking.private_subnet_ids # revert to match networking output
   alb_security_group_id = module.networking.wf_alb_sg_id
   web_security_group_id = module.networking.wf_web_sg_id
 
@@ -15,6 +15,7 @@ module "compute" {
   hosted_zone_id     = var.hosted_zone_id
   certificate_arn    = var.certificate_arn
 }
+
 
 
 module "networking" {
