@@ -15,7 +15,6 @@ jobs:
     name: 'Terraform Apply'
     runs-on: ubuntu-latest
     environment: production
-
     defaults:
       run:
         shell: bash
@@ -35,12 +34,8 @@ jobs:
           aws-region: eu-west-2
 
       - name: Initialize Terraform
-        env:
-          TF_CLOUD_TOKEN: ${{ secrets.TF_CLOUD_TOKEN }}
-        run: terraform init
+        run: terraform init -no-color -input=false
 
       - name: Terraform Apply
         if: ${{ github.event.workflow_run.conclusion == 'success' }}
-        env:
-          TF_CLOUD_TOKEN: ${{ secrets.TF_CLOUD_TOKEN }}
         run: terraform apply -no-color -auto-approve plan.out

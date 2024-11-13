@@ -39,16 +39,12 @@ jobs:
 
       - name: Initialize Terraform
         if: env.state_exists == 'true'
-        env:
-          TF_CLOUD_TOKEN: ${{ secrets.TF_CLOUD_TOKEN }}  # Add TF_CLOUD_TOKEN here
         run: terraform init -no-color -input=false -lock=false
         working-directory: ./terraform
 
       - name: Run Terraform Plan for Drift Detection
         id: terraform_plan
         if: env.state_exists == 'true'
-        env:
-          TF_CLOUD_TOKEN: ${{ secrets.TF_CLOUD_TOKEN }}  # Add TF_CLOUD_TOKEN here
         run: terraform plan -no-color -lock=false -detailed-exitcode -compact-warnings -out drift.tfplan
         continue-on-error: true
         working-directory: ./terraform

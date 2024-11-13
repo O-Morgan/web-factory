@@ -1,12 +1,4 @@
 terraform {
-  cloud {
-    organization = "Owen_Morgan"
-
-    workspaces {
-      name = "web-factory"
-    }
-  }
-
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -16,12 +8,12 @@ terraform {
 }
 
 provider "aws" {
-  region = var.region
+  region = var.region # Ensure 'region' is set in variables.tf or provided as an input
 
   default_tags {
     tags = {
       Project     = "web-factory"
-      Environment = "production"
+      Environment = "production" # Adjust this as needed
       ManagedBy   = "Terraform"
     }
   }

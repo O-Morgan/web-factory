@@ -14,7 +14,6 @@ jobs:
     name: 'Terraform Plan'
     runs-on: ubuntu-latest
     environment: production
-
     defaults:
       run:
         shell: bash
@@ -34,12 +33,8 @@ jobs:
           aws-region: eu-west-2
 
       - name: Initialize Terraform
-        env:
-          TF_CLOUD_TOKEN: ${{ secrets.TF_CLOUD_TOKEN }}
-        run: terraform init
+        run: terraform init -input=false
 
       - name: Terraform Plan
         id: plan
-        env:
-          TF_CLOUD_TOKEN: ${{ secrets.TF_CLOUD_TOKEN }}
         run: terraform plan -no-color -out=plan.out

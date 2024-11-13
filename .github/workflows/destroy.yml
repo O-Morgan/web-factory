@@ -12,7 +12,6 @@ jobs:
     name: 'Manual Terraform Destroy'
     runs-on: ubuntu-latest
     environment: production
-
     defaults:
       run:
         shell: bash
@@ -32,16 +31,10 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Initialize Terraform
-        env:
-          TF_CLOUD_TOKEN: ${{ secrets.TF_CLOUD_TOKEN }}  # Pass the token here
         run: terraform init -no-color -input=false -lock=false
 
       - name: Refresh State (Optional)
-        env:
-          TF_CLOUD_TOKEN: ${{ secrets.TF_CLOUD_TOKEN }}  # Pass the token here
         run: terraform refresh -input=false
 
       - name: Terraform Destroy
-        env:
-          TF_CLOUD_TOKEN: ${{ secrets.TF_CLOUD_TOKEN }}  # Pass the token here
         run: terraform destroy -no-color -auto-approve
