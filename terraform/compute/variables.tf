@@ -1,5 +1,3 @@
-# compute/variables.tf
-
 variable "vpc_id" {
   description = "VPC ID where resources will be created"
   type        = string
@@ -14,7 +12,6 @@ variable "private_subnet_ids" {
   description = "List of private subnet IDs for EC2 instances"
   type        = list(string)
 }
-
 
 variable "alb_security_group_id" {
   description = "Security group ID for the ALB"
@@ -59,8 +56,4 @@ variable "hosted_zone_id" {
 variable "certificate_arn" {
   description = "Certificate ARN for SSL"
   type        = string
-}
-variable "private_subnets" {
-  description = "List of private subnet IDs for EC2 instances in the Auto Scaling group"
-  type        = list(string)
 }
