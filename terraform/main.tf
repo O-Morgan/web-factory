@@ -9,14 +9,13 @@ module "networking" {
   allowed_http_cidr    = var.allowed_http_cidr
   allowed_https_cidr   = var.allowed_https_cidr
   web_server_port      = var.web_server_port
-  # No need to pass alb_dns_name or alb_zone_id here
 }
 
 module "compute" {
   source                = "./compute"
   vpc_id                = module.networking.wf_vpc_id
-  public_subnet_ids     = module.networking.wf_public_subnet_ids
-  private_subnet_ids    = module.networking.wf_private_subnet_ids
+  public_subnets        = module.networking.wf_public_subnet_ids  # updated name
+  private_subnets       = module.networking.wf_private_subnet_ids # updated name
   alb_security_group_id = module.networking.wf_alb_sg_id
   web_security_group_id = module.networking.wf_web_sg_id
 
