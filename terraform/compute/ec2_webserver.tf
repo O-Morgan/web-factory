@@ -26,8 +26,4 @@ resource "aws_launch_configuration" "web_server_config" {
     create_before_destroy = true
   }
 
-  tags = {
-    Name        = "Web_Server"
-    Environment = "production"
-  }
 }
