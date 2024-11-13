@@ -1,4 +1,5 @@
 resource "aws_security_group" "wf_alb_sg" {
+  description = "Security group for Application Load Balancer"
   vpc_id = aws_vpc.wf_main_vpc.id
   ingress {
     from_port   = var.http_port
@@ -24,6 +25,7 @@ resource "aws_security_group" "wf_alb_sg" {
 }
 
 resource "aws_security_group" "wf_web_sg" {
+  description = "Security group for web servers in private subnets"
   vpc_id = aws_vpc.wf_main_vpc.id
   ingress {
     from_port       = var.web_server_port
