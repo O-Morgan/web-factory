@@ -10,6 +10,7 @@ module "networking" {
   allowed_https_cidr   = var.allowed_https_cidr
   web_server_port      = var.web_server_port
 
+  # Output references for use in the compute module
   alb_dns_name = module.compute.wf_alb_dns_name
   alb_zone_id  = module.compute.wf_alb_zone_id
 }
@@ -17,8 +18,8 @@ module "networking" {
 module "compute" {
   source                = "./compute"
   vpc_id                = module.networking.wf_vpc_id
-  public_subnet_ids     = module.networking.wf_public_subnet_ids # Fix here to pass public_subnet_ids
-  private_subnets       = module.networking.wf_private_subnet_ids
+  public_subnet_ids     = module.networking.wf_public_subnet_ids  # Updated to ensure correct argument
+  private_subnet_ids    = module.networking.wf_private_subnet_ids # Correct output reference from networking module
   alb_security_group_id = module.networking.wf_alb_sg_id
   web_security_group_id = module.networking.wf_web_sg_id
 
@@ -31,6 +32,7 @@ module "compute" {
   hosted_zone_id     = var.hosted_zone_id
   certificate_arn    = var.certificate_arn
 }
+
 
 #key_name           = var.key_name
 #public_key         = var.public_key # Ensure public_key is passed to compute module
