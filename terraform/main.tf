@@ -5,4 +5,13 @@ resource "aws_instance" "example" {
   tags = {
     Name = "SimpleEC2Instance"
   }
-}
+
+  root_block_device {
+    volume_type = "gp3"
+    encrypted   = true
+  }
+
+  metadata_options {
+    http_tokens = "required" # Enforce IMDSv2
+  }
+} 

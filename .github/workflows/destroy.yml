@@ -12,7 +12,6 @@ jobs:
     name: 'Manual Terraform Destroy'
     runs-on: ubuntu-latest
     environment: production
-
     defaults:
       run:
         shell: bash

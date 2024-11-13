@@ -49,4 +49,11 @@ terraform fmt -recursive
 
 action plan file structure - if action syntax error the tell tail sign is the action will sit witht the full file path extension
 
+https://docs.github.com/en/code-security/dependabot/working-with-dependabot/keeping-your-actions-up-to-date-with-dependabot 
+
+https://aws.amazon.com/ec2/instance-types/
+
 git tag -d <tag-name>
+
+store state remotely 
+https://developer.hashicorp.com/terraform/tutorials/aws-get-started/aws-remote 

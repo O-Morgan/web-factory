@@ -8,12 +8,12 @@ terraform {
 }
 
 provider "aws" {
-  region = var.region # Reference a variable instead of GitHub Secrets directly
+  region = var.region # Ensure 'region' is set in variables.tf or provided as an input
 
   default_tags {
     tags = {
       Project     = "web-factory"
-      Environment = "production" # Update as needed
+      Environment = "production" # Adjust this as needed
       ManagedBy   = "Terraform"
     }
   }
