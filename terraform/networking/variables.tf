@@ -64,3 +64,13 @@ variable "certificate_arn" {
   type        = string
   default     = ""
 }
+
+variable "alb_dns_name" {
+  description = "DNS name of the Application Load Balancer"
+  type        = string
+}
+
+variable "alb_zone_id" {
+  description = "Zone ID of the Application Load Balancer"
+  type        = string
+}

@@ -9,7 +9,11 @@ module "networking" {
   allowed_http_cidr    = var.allowed_http_cidr
   allowed_https_cidr   = var.allowed_https_cidr
   web_server_port      = var.web_server_port
+  hosted_zone_id       = var.hosted_zone_id
+  alb_dns_name         = module.compute.wf_alb_dns_name # Pass from compute module
+  alb_zone_id          = module.compute.wf_alb_zone_id  # Pass from compute module
 }
+
 
 module "compute" {
   source                = "./compute"
@@ -22,14 +26,16 @@ module "compute" {
   alb_dns_name          = module.networking.wf_alb_dns_name
   alb_zone_id           = module.networking.wf_alb_zone_id
 
-  # Compute variables
   instance_type      = var.instance_type
   ami_id             = var.ami_id
   min_instance_count = var.min_instance_count
   max_instance_count = var.max_instance_count
-  key_name           = var.key_name
   domain_name        = var.domain_name
   hosted_zone_id     = var.hosted_zone_id
   certificate_arn    = var.certificate_arn
-  #public_key         = var.public_key # Ensure public_key is passed to compute module
 }
+
+
+
+#key_name           = var.key_name
+#public_key         = var.public_key # Ensure public_key is passed to compute module

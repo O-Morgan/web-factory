@@ -45,10 +45,10 @@ variable "max_instance_count" {
   type        = number
 }
 
-variable "key_name" {
-  description = "Key pair name for EC2 instances"
-  type        = string
-}
+#variable "key_name" {
+#  description = "Key pair name for EC2 instances"
+#  type        = string
+#}
 
 variable "domain_name" {
   description = "Domain name for Route 53"
@@ -83,3 +83,4 @@ variable "alb_zone_id" {
   description = "Zone ID of the Application Load Balancer"
   type        = string
 }
+
