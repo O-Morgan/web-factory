@@ -31,5 +31,5 @@ module "compute" {
   domain_name        = var.domain_name
   hosted_zone_id     = var.hosted_zone_id
   certificate_arn    = var.certificate_arn
-  public_key         = var.public_key # Ensure public_key is passed to compute module
+  #public_key         = var.public_key # Ensure public_key is passed to compute module
 }

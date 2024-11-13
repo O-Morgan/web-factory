@@ -65,10 +65,9 @@ variable "certificate_arn" {
   type        = string
 }
 
-variable "public_key" {
-  description = "Public SSH key for EC2 instances"
-  type        = string
-}
+#variable "public_key" {
+# description = "Public SSH key for EC2 instances"
+# type        = string
 
 variable "public_subnet_ids" {
   description = "List of public subnet IDs for ALB"
