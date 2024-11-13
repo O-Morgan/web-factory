@@ -26,5 +26,5 @@ module "compute" {
   max_instance_count = var.max_instance_count
   domain_name        = var.domain_name
   hosted_zone_id     = var.hosted_zone_id
-  certificate_arn    = var.certificate_arn != "" ? var.certificate_arn : "${env.CERTIFICATE_ARN}" # Add this line
+  certificate_arn    = var.certificate_arn # Add this line
 }
