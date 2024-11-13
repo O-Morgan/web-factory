@@ -60,3 +60,7 @@ variable "certificate_arn" {
   description = "Certificate ARN for SSL"
   type        = string
 }
+variable "private_subnets" {
+  description = "List of private subnet IDs for EC2 instances in the Auto Scaling group"
+  type        = list(string)
+}

@@ -24,12 +24,4 @@ output "wf_web_sg_id" {
   description = "ID of the Web Server Security Group"
   value       = aws_security_group.wf_web_sg.id
 }
-output "wf_alb_dns_name" {
-  description = "DNS name of the Application Load Balancer"
-  value       = aws_lb.wf_alb.dns_name
-}
 
-output "wf_alb_zone_id" {
-  description = "Zone ID of the Application Load Balancer"
-  value       = aws_lb.wf_alb.zone_id
-}
