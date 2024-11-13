@@ -38,4 +38,6 @@ jobs:
 
       - name: Terraform Apply
         if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        env:
+          CERTIFICATE_ARN: ${{ secrets.MY_CERTIFICATE_ID }}
         run: terraform apply -no-color -auto-approve
