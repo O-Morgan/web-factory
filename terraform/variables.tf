@@ -114,7 +114,7 @@ variable "certificate_arn" {
   default     = ""
 }
 
-variable "public_key" {
-  description = "Public SSH key for EC2 instances"
-  type        = string
-}
+#variable "public_key" {
+ # description = "Public SSH key for EC2 instances"
+  #type        = string
+
