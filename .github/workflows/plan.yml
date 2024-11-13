@@ -33,48 +33,7 @@ jobs:
           aws-region: eu-west-2
 
       - name: Initialize Terraform
-        run: terraform init -input=false
-
-      - name: Terraform Plan
-        id: plan
-        run: terraform plan -no-color -out=plan.out
-name: Terraform Plan
-
-on:
-  pull_request:
-    branches:
-      - main
-
-permissions:
-  contents: write
-  id-token: write
-
-jobs:
-  terraform_plan:
-    name: 'Terraform Plan'
-    runs-on: ubuntu-latest
-    environment: production
-    defaults:
-      run:
-        shell: bash
-        working-directory: ./terraform
-
-    steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v4
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-
-      - name: Configure AWS credentials with OIDC
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
-          aws-region: eu-west-2
-
-      - name: Initialize Terraform
         run: terraform init -no-color -input=false
 
       - name: Terraform Plan
-        run: terraform plan -no-color -out=plan.out
-        id: terraform_plan
+        run: terraform plan -no-color
