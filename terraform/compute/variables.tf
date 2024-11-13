@@ -69,12 +69,6 @@ variable "public_key" {
   description = "Public SSH key for EC2 instances"
   type        = string
 }
-# compute/variables.tf
-
-variable "alb_security_group_id" {
-  description = "Security group ID for ALB"
-  type        = string
-}
 
 variable "public_subnet_ids" {
   description = "List of public subnet IDs for ALB"

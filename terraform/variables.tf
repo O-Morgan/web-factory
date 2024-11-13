@@ -3,7 +3,7 @@
 variable "region" {
   description = "AWS region for the provider"
   type        = string
-  default     = "eu-west-2"  # Set this to your desired AWS region
+  default     = "eu-west-2" # Set this to your desired AWS region
 }
 
 # Networking variables
