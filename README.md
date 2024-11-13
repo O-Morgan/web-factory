@@ -57,3 +57,5 @@ git tag -d <tag-name>
 
 store state remotely 
 https://developer.hashicorp.com/terraform/tutorials/aws-get-started/aws-remote 
+
+updated terraform backend
