@@ -14,8 +14,8 @@ module "networking" {
 module "compute" {
   source                = "./compute"
   vpc_id                = module.networking.wf_vpc_id
-  public_subnet_ids     = module.networking.wf_public_subnet_ids  # consistent naming
-  private_subnet_ids    = module.networking.wf_private_subnet_ids # consistent naming
+  public_subnet_ids     = module.networking.wf_public_subnet_ids
+  private_subnet_ids    = module.networking.wf_private_subnet_ids
   alb_security_group_id = module.networking.wf_alb_sg_id
   web_security_group_id = module.networking.wf_web_sg_id
 
@@ -26,5 +26,5 @@ module "compute" {
   max_instance_count = var.max_instance_count
   domain_name        = var.domain_name
   hosted_zone_id     = var.hosted_zone_id
-  certificate_arn    = var.certificate_arn
+  certificate_arn    = module.networking.certificate_arn  # Pass the certificate from networking
 }

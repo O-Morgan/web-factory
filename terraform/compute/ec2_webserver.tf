@@ -1,29 +1,26 @@
-#resource "aws_key_pair" "wf_web_server_key_pair" {
-#  description = "Key pair for SSH access to web server instances"
-#  key_name    = "wf_web_server_key_pair"
-#  public_key  = var.public_key # Add your public SSH key here
-#  tags = {
-#    Name = "WF_Web_Server_Key_Pair"
-#  }
-#}
+resource "aws_launch_template" "web_server_template" {
+  name                   = "wf_web_server_template"
+  instance_type          = var.instance_type
+  image_id               = var.ami_id
+  vpc_security_group_ids = [var.web_security_group_id]
 
-# compute/ec2_webserver.tf
-
-resource "aws_launch_configuration" "web_server_config" {
-  name            = "wf_web_server_launch_config"
-  image_id        = var.ami_id
-  instance_type   = var.instance_type
-  security_groups = [var.web_security_group_id]
-
-  ebs_block_device {
+  block_device_mappings {
     device_name = "/dev/xvda"
-    volume_size = 8
-    volume_type = "gp3"
-    encrypted   = true
+    ebs {
+      volume_size = 8
+      volume_type = "gp3"
+      encrypted   = true
+    }
+  }
+
+  tag_specifications {
+    resource_type = "instance"
+    tags = {
+      Name = "web_server"
+    }
   }
 
   lifecycle {
     create_before_destroy = true
   }
-
 }
