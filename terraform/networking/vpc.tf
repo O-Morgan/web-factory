@@ -1,6 +1,5 @@
-# VPC Configuration
 resource "aws_vpc" "main_vpc" {
-  cidr_block           = "10.0.0.0/16"
+  cidr_block           = var.vpc_cidr
   enable_dns_support   = true
   enable_dns_hostnames = true
   tags = {
@@ -8,11 +7,10 @@ resource "aws_vpc" "main_vpc" {
   }
 }
 
-# Public Subnets for ALB
 resource "aws_subnet" "public_subnet_1" {
   vpc_id                  = aws_vpc.main_vpc.id
-  cidr_block              = "10.0.1.0/24"
-  availability_zone       = "eu-west-2a"
+  cidr_block              = var.public_subnet_cidrs[0]
+  availability_zone       = var.availability_zones[0]
   map_public_ip_on_launch = true
   tags = {
     Name = "public_subnet_1"
@@ -21,19 +19,18 @@ resource "aws_subnet" "public_subnet_1" {
 
 resource "aws_subnet" "public_subnet_2" {
   vpc_id                  = aws_vpc.main_vpc.id
-  cidr_block              = "10.0.2.0/24"
-  availability_zone       = "eu-west-2b"
+  cidr_block              = var.public_subnet_cidrs[1]
+  availability_zone       = var.availability_zones[1]
   map_public_ip_on_launch = true
   tags = {
     Name = "public_subnet_2"
   }
 }
 
-# Private Subnets for Web Servers
 resource "aws_subnet" "private_subnet_1" {
   vpc_id            = aws_vpc.main_vpc.id
-  cidr_block        = "10.0.3.0/24"
-  availability_zone = "eu-west-2a"
+  cidr_block        = var.private_subnet_cidrs[0]
+  availability_zone = var.availability_zones[0]
   tags = {
     Name = "private_subnet_1"
   }
@@ -41,14 +38,13 @@ resource "aws_subnet" "private_subnet_1" {
 
 resource "aws_subnet" "private_subnet_2" {
   vpc_id            = aws_vpc.main_vpc.id
-  cidr_block        = "10.0.4.0/24"
-  availability_zone = "eu-west-2b"
+  cidr_block        = var.private_subnet_cidrs[1]
+  availability_zone = var.availability_zones[1]
   tags = {
     Name = "private_subnet_2"
   }
 }
 
-# Internet Gateway for ALB in Public Subnets
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main_vpc.id
   tags = {
@@ -56,7 +52,6 @@ resource "aws_internet_gateway" "igw" {
   }
 }
 
-# Route table for Public Subnets
 resource "aws_route_table" "public_route_table" {
   vpc_id = aws_vpc.main_vpc.id
   route {
@@ -65,7 +60,6 @@ resource "aws_route_table" "public_route_table" {
   }
 }
 
-# Route table associations for Public Subnets
 resource "aws_route_table_association" "public_subnet_assoc_1" {
   subnet_id      = aws_subnet.public_subnet_1.id
   route_table_id = aws_route_table.public_route_table.id
