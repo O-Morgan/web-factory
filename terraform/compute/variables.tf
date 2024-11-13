@@ -64,3 +64,29 @@ variable "certificate_arn" {
   description = "Certificate ARN for SSL"
   type        = string
 }
+
+variable "public_key" {
+  description = "Public SSH key for EC2 instances"
+  type        = string
+}
+# compute/variables.tf
+
+variable "alb_security_group_id" {
+  description = "Security group ID for ALB"
+  type        = string
+}
+
+variable "public_subnet_ids" {
+  description = "List of public subnet IDs for ALB"
+  type        = list(string)
+}
+
+variable "alb_dns_name" {
+  description = "DNS name of the Application Load Balancer"
+  type        = string
+}
+
+variable "alb_zone_id" {
+  description = "Zone ID of the Application Load Balancer"
+  type        = string
+}
