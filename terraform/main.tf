@@ -9,6 +9,7 @@ module "networking" {
   allowed_http_cidr    = var.allowed_http_cidr
   allowed_https_cidr   = var.allowed_https_cidr
   web_server_port      = var.web_server_port
+  # No need to pass alb_dns_name or alb_zone_id here
 }
 
 module "compute" {
@@ -28,7 +29,3 @@ module "compute" {
   hosted_zone_id     = var.hosted_zone_id
   certificate_arn    = var.certificate_arn
 }
-
-
-#key_name           = var.key_name
-#public_key         = var.public_key # Ensure public_key is passed to compute module
