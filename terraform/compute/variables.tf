@@ -45,11 +45,6 @@ variable "max_instance_count" {
   type        = number
 }
 
-#variable "key_name" {
-#  description = "Key pair name for EC2 instances"
-#  type        = string
-#}
-
 variable "domain_name" {
   description = "Domain name for Route 53"
   type        = string
@@ -64,23 +59,3 @@ variable "certificate_arn" {
   description = "Certificate ARN for SSL"
   type        = string
 }
-
-#variable "public_key" {
-# description = "Public SSH key for EC2 instances"
-# type        = string
-
-variable "public_subnet_ids" {
-  description = "List of public subnet IDs for ALB"
-  type        = list(string)
-}
-
-variable "alb_dns_name" {
-  description = "DNS name of the Application Load Balancer"
-  type        = string
-}
-
-variable "alb_zone_id" {
-  description = "Zone ID of the Application Load Balancer"
-  type        = string
-}
-

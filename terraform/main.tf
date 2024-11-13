@@ -29,7 +29,5 @@ module "compute" {
   certificate_arn    = var.certificate_arn
 }
 
-
-
 #key_name           = var.key_name
 #public_key         = var.public_key # Ensure public_key is passed to compute module
