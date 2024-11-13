@@ -5,12 +5,12 @@ variable "vpc_id" {
   type        = string
 }
 
-variable "wf_public_subnets" {
+variable "public_subnets" {
   description = "List of public subnet IDs for the ALB"
   type        = list(string)
 }
 
-variable "wf_private_subnets" {
+variable "private_subnets" {
   description = "List of private subnet IDs for EC2 instances"
   type        = list(string)
 }
