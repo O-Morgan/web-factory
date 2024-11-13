@@ -29,10 +29,6 @@ output "wf_private_subnets" {
   value       = [aws_subnet.wf_private_subnet_1.id, aws_subnet.wf_private_subnet_2.id]
 }
 
-output "wf_alb_sg_id" {
-  description = "ID of the ALB security group"
-  value       = aws_security_group.wf_alb_sg.id
-}
 
 output "wf_web_security_group_id" {
   description = "ID of the web server security group"
