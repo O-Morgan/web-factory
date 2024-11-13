@@ -1,16 +1,14 @@
-# networking/outputs.tf
-
 output "wf_vpc_id" {
   description = "The ID of the VPC created"
   value       = aws_vpc.wf_main_vpc.id
 }
 
-output "public_subnets" { # update from wf_public_subnet_ids
+output "wf_public_subnet_ids" {
   description = "List of public subnet IDs for ALB"
   value       = [aws_subnet.wf_public_subnet_1.id, aws_subnet.wf_public_subnet_2.id]
 }
 
-output "private_subnets" { # update from wf_private_subnet_ids
+output "wf_private_subnet_ids" {
   description = "List of private subnet IDs"
   value       = [aws_subnet.wf_private_subnet_1.id, aws_subnet.wf_private_subnet_2.id]
 }
