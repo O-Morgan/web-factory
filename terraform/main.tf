@@ -14,16 +14,15 @@ module "networking" {
   alb_zone_id  = module.compute.wf_alb_zone_id
 }
 
-
 module "compute" {
   source                = "./compute"
   vpc_id                = module.networking.wf_vpc_id
-  public_subnets        = module.networking.wf_public_subnet_ids
+  public_subnet_ids     = module.networking.wf_public_subnet_ids # Fix here to pass public_subnet_ids
   private_subnets       = module.networking.wf_private_subnet_ids
   alb_security_group_id = module.networking.wf_alb_sg_id
   web_security_group_id = module.networking.wf_web_sg_id
 
-  # Compute-specific variables
+  # Additional compute-specific variables
   instance_type      = var.instance_type
   ami_id             = var.ami_id
   min_instance_count = var.min_instance_count
