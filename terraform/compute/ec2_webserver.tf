@@ -1,7 +1,7 @@
 resource "aws_key_pair" "wf_web_server_key_pair" {
   description = "Key pair for SSH access to web server instances"
-  key_name   = "wf_web_server_key_pair"
-  public_key = var.public_key  # Add your public SSH key here
+  key_name    = "wf_web_server_key_pair"
+  public_key  = var.public_key # Add your public SSH key here
   tags = {
     Name = "WF_Web_Server_Key_Pair"
   }

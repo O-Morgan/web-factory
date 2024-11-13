@@ -87,20 +87,23 @@ variable "key_name" {
   default     = "wf_web_server_key_pair"
 }
 
-# Route 53 and SSL
+# Domain name for Route 53 and ACM certificate
 variable "domain_name" {
-  description = "Domain name for Route 53"
+  description = "Primary domain name for Route 53 and ACM certificate (e.g., infra-owen-morgan.com)"
   type        = string
   default     = "infra-owen-morgan.com"
 }
 
+# Hosted zone ID for Route 53
 variable "hosted_zone_id" {
-  description = "Hosted zone ID for Route 53"
+  description = "Hosted Zone ID in Route 53 for managing DNS records"
   type        = string
   default     = "Z09823381091ASFSLUHFE"
 }
 
+# Certificate ARN (for use if reusing an existing certificate)
 variable "certificate_arn" {
-  description = "Certificate ARN for SSL"
+  description = "Certificate ARN for SSL (if reusing an existing certificate)"
   type        = string
+  default     = ""
 }
