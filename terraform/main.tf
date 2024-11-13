@@ -10,8 +10,8 @@ module "networking" {
   allowed_https_cidr   = var.allowed_https_cidr
   web_server_port      = var.web_server_port
   hosted_zone_id       = var.hosted_zone_id
-  alb_dns_name         = module.compute.wf_alb_dns_name  # Pass from compute module
-  alb_zone_id          = module.compute.wf_alb_zone_id   # Pass from compute module
+  alb_dns_name         = module.compute.wf_alb_dns_name # Pass from compute module
+  alb_zone_id          = module.compute.wf_alb_zone_id  # Pass from compute module
 }
 
 

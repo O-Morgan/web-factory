@@ -12,13 +12,12 @@ resource "aws_acm_certificate" "wf_certificate" {
 
 # DNS validation records in Route 53 for ACM certificate
 resource "aws_route53_record" "acm_validation" {
-  description = "DNS validation records for ACM certificate in Route 53"
-  for_each    = { for dvo in aws_acm_certificate.wf_certificate.domain_validation_options : dvo.domain_name => dvo }
-  zone_id     = var.hosted_zone_id
-  name        = each.value.resource_record_name
-  type        = each.value.resource_record_type
-  records     = [each.value.resource_record_value]
-  ttl         = 60
+  for_each = { for dvo in aws_acm_certificate.wf_certificate.domain_validation_options : dvo.domain_name => dvo }
+  zone_id  = var.hosted_zone_id
+  name     = each.value.resource_record_name
+  type     = each.value.resource_record_type
+  records  = [each.value.resource_record_value]
+  ttl      = 60
 }
 
 # Wait for the ACM certificate to be validated
