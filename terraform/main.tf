@@ -9,6 +9,9 @@ module "networking" {
   allowed_http_cidr    = var.allowed_http_cidr
   allowed_https_cidr   = var.allowed_https_cidr
   web_server_port      = var.web_server_port
+
+  alb_dns_name = module.compute.alb_dns_name # Pass ALB DNS name from compute
+  alb_zone_id  = module.compute.alb_zone_id  # Pass ALB zone ID from compute
 }
 
 module "compute" {
@@ -26,5 +29,5 @@ module "compute" {
   max_instance_count = var.max_instance_count
   domain_name        = var.domain_name
   hosted_zone_id     = var.hosted_zone_id
-  certificate_arn    = var.certificate_arn # Add this line
+  certificate_arn    = module.networking.certificate_arn # Use certificate_arn from networking
 }
