@@ -1,17 +1,5 @@
 # compute/loadbalancer.tf
 
-# ACM Certificate for HTTPS on ALB
-resource "aws_acm_certificate" "wf_certificate" {
-  domain_name               = var.domain_name
-  validation_method         = "DNS"
-  subject_alternative_names = ["www.${var.domain_name}"]
-
-  tags = {
-    Name        = "WF_ACM_Certificate"
-    Environment = "production"
-  }
-}
-
 resource "aws_lb" "wf_alb" {
   name               = "wf-alb"
   internal           = false
