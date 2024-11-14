@@ -17,11 +17,11 @@ module "networking" {
 module "compute" {
   source                = "./compute"
   vpc_id                = module.networking.wf_vpc_id
-  public_subnet_ids     = module.networking.wf_public_subnet_ids
-  private_subnet_ids    = module.networking.wf_private_subnet_ids
+  public_subnet_ids     = module.networking.wf_public_subnet_ids  # Ensure this references subnet IDs
+  private_subnet_ids    = module.networking.wf_private_subnet_ids # Ensure this references subnet IDs
   alb_security_group_id = module.networking.wf_alb_sg_id
   web_security_group_id = module.networking.wf_web_sg_id
-  certificate_arn       = module.compute.certificate_arn
+  certificate_arn       = module.networking.certificate_arn # Referencing the ACM certificate ARN
 
   # Additional compute-specific variables
   instance_type      = var.instance_type
