@@ -22,3 +22,8 @@ output "wf_web_sg_id" {
   description = "ID of the Web Server Security Group"
   value       = aws_security_group.wf_web_sg.id
 }
+
+output "certificate_arn" {
+  description = "The ARN of the validated ACM certificate for use with ALB"
+  value       = aws_acm_certificate.wf_certificate.arn
+}
