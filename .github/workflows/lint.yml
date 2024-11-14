@@ -1,4 +1,4 @@
-name: Terraform Format Check
+name: Terraform Lint Check
 
 on:
   pull_request:
@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   terraform_fmt:
-    name: 'Terraform Fmt Check'
+    name: 'Terraform Lint Check'
     runs-on: ubuntu-latest
     environment: development
 
