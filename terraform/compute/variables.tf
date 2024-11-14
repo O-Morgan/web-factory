@@ -50,3 +50,14 @@ variable "certificate_arn" {
   type        = string
   default     = ""
 }
+# compute/variables.tf
+
+variable "domain_name" {
+  description = "Primary domain name for Route 53 and ACM certificate"
+  type        = string
+}
+
+variable "hosted_zone_id" {
+  description = "Hosted Zone ID for Route 53"
+  type        = string
+}
