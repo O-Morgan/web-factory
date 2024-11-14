@@ -25,12 +25,13 @@ output "wf_web_sg_id" {
 
 # compute/outputs.tf
 
-output "wf_alb_dns_name" {
-  description = "DNS name of the Application Load Balancer"
+output "alb_dns_name" {
+  description = "DNS name of the ALB"
   value       = aws_lb.wf_alb.dns_name
 }
 
-output "wf_alb_zone_id" {
-  description = "Zone ID of the Application Load Balancer"
+output "alb_zone_id" {
+  description = "Zone ID of the ALB"
   value       = aws_lb.wf_alb.zone_id
 }
+
