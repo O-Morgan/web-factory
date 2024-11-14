@@ -14,30 +14,6 @@ resource "aws_acm_certificate_validation" "wf_certificate_validation" {
   validation_record_fqdns = [for record in aws_route53_record.acm_validation : record.fqdn]
 }
 
-# Route 53 record for www subdomain, pointing to ALB
-resource "aws_route53_record" "www" {
-  zone_id = var.hosted_zone_id
-  name    = "www"
-  type    = "A"
-  alias {
-    name                   = var.alb_dns_name # Pass alb_dns_name from networking outputs
-    zone_id                = var.alb_zone_id  # Pass alb_zone_id from networking outputs
-    evaluate_target_health = true
-  }
-}
-
-# Route 53 record for root domain, pointing to ALB
-resource "aws_route53_record" "root" {
-  zone_id = var.hosted_zone_id
-  name    = ""
-  type    = "A"
-  alias {
-    name                   = var.alb_dns_name # Pass alb_dns_name from networking outputs
-    zone_id                = var.alb_zone_id  # Pass alb_zone_id from networking outputs
-    evaluate_target_health = true
-  }
-}
-
 # Output for ACM Certificate ARN to use with ALB in compute module
 output "certificate_arn" {
   description = "The ARN of the validated ACM certificate for use with ALB"
