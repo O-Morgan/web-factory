@@ -73,3 +73,7 @@ variable "alb_zone_id" {
   description = "Zone ID of the Application Load Balancer"
   type        = string
 }
+variable "certificate_arn" {
+  description = "The ARN of the ACM certificate from the compute module"
+  type        = string
+}
