@@ -8,3 +8,8 @@ output "alb_zone_id" {
   value       = aws_lb.wf_alb.zone_id
 }
 
+# compute/outputs.tf
+output "certificate_arn" {
+  description = "The ARN of the validated ACM certificate for use with ALB"
+  value       = aws_acm_certificate.wf_certificate.arn
+}

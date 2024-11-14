@@ -62,5 +62,4 @@ variable "hosted_zone_id" {
 variable "certificate_arn" {
   description = "The ARN of the ACM certificate for HTTPS listener"
   type        = string
-  default     = ""
 }
