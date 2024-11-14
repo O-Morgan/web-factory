@@ -21,7 +21,7 @@ module "compute" {
   private_subnet_ids    = module.networking.wf_private_subnet_ids
   alb_security_group_id = module.networking.wf_alb_sg_id
   web_security_group_id = module.networking.wf_web_sg_id
-  certificate_arn       = module.compute.certificate_arn # Corrected reference to compute
+  certificate_arn       = "arn:aws:acm:eu-west-2:182399680009:certificate/8b3e293a-6854-46c3-bb2b-c602da5297ed"
 
   instance_type      = var.instance_type
   ami_id             = var.ami_id

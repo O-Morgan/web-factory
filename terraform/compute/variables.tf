@@ -58,8 +58,8 @@ variable "hosted_zone_id" {
   type        = string
 }
 
-# ACM Certificate ARN for HTTPS on ALB
 variable "certificate_arn" {
-  description = "The ARN of the ACM certificate for HTTPS listener"
+  description = "Certificate ARN for SSL (if reusing an existing certificate)"
   type        = string
+  default     = "" # Leave empty or set directly if you'd like
 }
