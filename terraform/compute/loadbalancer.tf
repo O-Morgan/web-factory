@@ -42,13 +42,14 @@ resource "aws_lb_listener" "https_listener" {
   port              = 443
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-2016-08"
-  certificate_arn   = var.certificate_arn
+  certificate_arn   = "arn:aws:acm:eu-west-2:182399680009:certificate/8b3e293a-6854-46c3-bb2b-c602da5297ed"
 
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.wf_alb_target_group.arn
   }
 }
+
 resource "aws_lb_listener" "http_listener" {
   load_balancer_arn = aws_lb.wf_alb.arn
   port              = 80
