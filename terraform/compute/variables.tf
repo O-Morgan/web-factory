@@ -1,10 +1,9 @@
-# VPC ID for resources in the compute module
+# Networking references from networking module outputs
 variable "vpc_id" {
-  description = "VPC ID where resources will be created"
+  description = "VPC ID for EC2 instances"
   type        = string
 }
 
-# Public and private subnet IDs for ALB and EC2 instances
 variable "public_subnet_ids" {
   description = "List of public subnet IDs for ALB"
   type        = list(string)
@@ -15,9 +14,8 @@ variable "private_subnet_ids" {
   type        = list(string)
 }
 
-# Security group IDs
 variable "alb_security_group_id" {
-  description = "Security group ID for the ALB"
+  description = "Security group ID for ALB"
   type        = string
 }
 
@@ -26,7 +24,7 @@ variable "web_security_group_id" {
   type        = string
 }
 
-# EC2 instance configuration
+# Compute-specific configurations
 variable "instance_type" {
   description = "Instance type for EC2 instances"
   type        = string
@@ -47,19 +45,8 @@ variable "max_instance_count" {
   type        = number
 }
 
-# Route 53 and SSL/TLS variables
-variable "domain_name" {
-  description = "Domain name for Route 53 and ACM certificate"
-  type        = string
-}
-
-variable "hosted_zone_id" {
-  description = "Hosted zone ID for Route 53"
-  type        = string
-}
-
 variable "certificate_arn" {
   description = "Certificate ARN for SSL (if reusing an existing certificate)"
   type        = string
-  default     = "" # Leave empty or set directly if you'd like
+  default     = ""
 }
