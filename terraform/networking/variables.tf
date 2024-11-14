@@ -58,12 +58,6 @@ variable "hosted_zone_id" {
   default     = "Z09823381091ASFSLUHFE"
 }
 
-# Certificate ARN (for use if reusing an existing certificate)
-variable "certificate_arn" {
-  description = "Certificate ARN for SSL (if reusing an existing certificate)"
-  type        = string
-
-}
 variable "alb_dns_name" {
   description = "DNS name of the Application Load Balancer"
   type        = string
