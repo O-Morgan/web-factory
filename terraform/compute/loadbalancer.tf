@@ -41,8 +41,7 @@ resource "aws_lb_listener" "https_listener" {
   port              = 443
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-TLS-1-2-2017-01" # Updated SSL policy
-  certificate_arn   = var.certificate
-
+  certificate_arn   = var.certificate_arn  # Use variable instead of hardcoded ARN
 
   default_action {
     type             = "forward"
