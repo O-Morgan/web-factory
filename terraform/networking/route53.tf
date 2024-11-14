@@ -1,15 +1,3 @@
-# ACM Certificate for HTTPS on ALB
-resource "aws_acm_certificate" "wf_certificate" {
-  domain_name               = var.domain_name
-  validation_method         = "DNS"
-  subject_alternative_names = ["www.${var.domain_name}"]
-
-  tags = {
-    Name        = "WF_ACM_Certificate"
-    Environment = "production"
-  }
-}
-
 # DNS validation records in Route 53 for ACM certificate
 resource "aws_route53_record" "acm_validation" {
   for_each = { for dvo in aws_acm_certificate.wf_certificate.domain_validation_options : dvo.domain_name => dvo }
@@ -24,4 +12,10 @@ resource "aws_route53_record" "acm_validation" {
 resource "aws_acm_certificate_validation" "wf_certificate_validation" {
   certificate_arn         = aws_acm_certificate.wf_certificate.arn
   validation_record_fqdns = [for record in aws_route53_record.acm_validation : record.fqdn]
+}
+
+# Output for ACM Certificate ARN to use with ALB in compute module
+output "certificate_arn" {
+  description = "The ARN of the validated ACM certificate for use with ALB"
+  value       = aws_acm_certificate.wf_certificate.arn
 }

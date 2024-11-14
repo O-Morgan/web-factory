@@ -62,5 +62,14 @@ variable "hosted_zone_id" {
 variable "certificate_arn" {
   description = "Certificate ARN for SSL (if reusing an existing certificate)"
   type        = string
-  default     = ""
+  
+}
+variable "alb_dns_name" {
+  description = "DNS name of the Application Load Balancer"
+  type        = string
+}
+
+variable "alb_zone_id" {
+  description = "Zone ID of the Application Load Balancer"
+  type        = string
 }

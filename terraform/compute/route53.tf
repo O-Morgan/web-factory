@@ -1,3 +1,5 @@
+# compute/route53.tf
+
 # Route 53 record for www subdomain, pointing to ALB
 resource "aws_route53_record" "www" {
   zone_id = var.hosted_zone_id
