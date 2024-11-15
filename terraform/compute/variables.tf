@@ -47,13 +47,3 @@ variable "max_instance_count" {
   description = "Maximum number of instances in the Auto Scaling group"
   type        = number
 }
-
-variable "domain_name" {
-  description = "Domain name for Route 53 and ACM certificate"
-  type        = string
-}
-
-variable "hosted_zone_id" {
-  description = "Hosted Zone ID for Route 53"
-  type        = string
-}
