@@ -78,6 +78,7 @@ variable "web_server_port" {
 variable "instance_type" {
   description = "Instance type for EC2 instances"
   type        = string
+  default     = "t2.micro"
 }
 
 variable "ami_id" {
@@ -90,9 +91,11 @@ variable "ami_id" {
 variable "min_instance_count" {
   description = "Minimum number of instances in the Auto Scaling group"
   type        = number
+  default     = 2
 }
 
 variable "max_instance_count" {
   description = "Maximum number of instances in the Auto Scaling group"
   type        = number
+  default     = 4
 }

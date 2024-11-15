@@ -41,11 +41,9 @@ variable "ami_id" {
 variable "min_instance_count" {
   description = "Minimum number of EC2 instances"
   type        = number
-  default     = 2
 }
 
 variable "max_instance_count" {
   description = "Maximum number of EC2 instances"
   type        = number
-  default     = 4
 }
