@@ -14,3 +14,12 @@ output "certificate_arn" {
   value = aws_acm_certificate.wf_certificate.arn
 }
 
+output "wf_alb_sg_id" {
+  description = "Security group ID for the ALB"
+  value       = aws_security_group.wf_alb_sg.id
+}
+
+output "wf_web_sg_id" {
+  description = "Security group ID for the Web Server"
+  value       = aws_security_group.wf_web_sg.id
+}
