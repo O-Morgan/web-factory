@@ -4,19 +4,6 @@ variable "region" {
   default     = "eu-west-2"
 }
 
-# Domain and Hosted Zone
-variable "domain_name" {
-  description = "Primary domain name for Route 53 and ACM certificate"
-  type        = string
-  default     = "infra-owen-morgan.com"
-}
-
-variable "hosted_zone_id" {
-  description = "Hosted Zone ID for Route 53"
-  type        = string
-  default     = "Z09823381091ASFSLUHFE"
-}
-
 variable "certificate_arn" {
   description = "Certificate ARN for SSL"
   type        = string
@@ -98,4 +85,20 @@ variable "max_instance_count" {
   description = "Maximum number of instances in the Auto Scaling group"
   type        = number
   default     = 4
+}
+variable "domain_name" {
+  description = "The domain name for Route 53 and ACM certificate"
+  type        = string
+}
+
+variable "hosted_zone_id" {
+  description = "Hosted Zone ID in Route 53"
+  type        = string
+  default     = "infra-owen-morgan.com"
+}
+
+variable "hosted_zone_id" {
+  description = "Hosted Zone ID for Route 53"
+  type        = string
+  default     = "Z09823381091ASFSLUHFE"
 }

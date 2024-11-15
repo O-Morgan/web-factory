@@ -53,12 +53,3 @@ variable "hosted_zone_id" {
   type        = string
 }
 
-variable "alb_dns_name" {
-  description = "DNS name of the ALB"
-  type        = string
-}
-
-variable "alb_zone_id" {
-  description = "The Zone ID of the Application Load Balancer (ALB)"
-  type        = string
-}
