@@ -31,13 +31,11 @@ variable "certificate_arn" {
 variable "instance_type" {
   description = "Instance type for EC2 instances"
   type        = string
-  default     = t2.micro
 }
 
 variable "ami_id" {
   description = "AMI ID for EC2 instances"
   type        = string
-  default     = "ami-0e8d228ad90af673b"
 }
 
 variable "min_instance_count" {
