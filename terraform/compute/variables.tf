@@ -23,10 +23,6 @@ variable "web_security_group_id" {
   type        = string
 }
 
-variable "certificate_arn" {
-  description = "Certificate ARN for ALB HTTPS"
-  type        = string
-}
 
 variable "instance_type" {
   description = "Instance type for EC2 instances"
