@@ -58,3 +58,7 @@ variable "alb_dns_name" {
   type        = string
 }
 
+variable "alb_zone_id" {
+  description = "The Zone ID of the Application Load Balancer (ALB)"
+  type        = string
+}
