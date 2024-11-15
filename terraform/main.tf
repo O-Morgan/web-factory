@@ -31,12 +31,3 @@ module "dns" {
   alb_dns_name   = module.compute.alb_dns_name
   alb_zone_id    = module.compute.alb_zone_id
 }
-
-# Reference ALB outputs directly in the root module
-output "alb_dns_name" {
-  value = module.compute.alb_dns_name
-}
-
-output "alb_zone_id" {
-  value = module.compute.alb_zone_id
-}
