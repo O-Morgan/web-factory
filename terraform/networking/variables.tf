@@ -42,3 +42,13 @@ variable "web_server_port" {
   description = "Port for web server traffic from ALB"
   type        = number
 }
+
+variable "domain_name" {
+  description = "Domain name for Route 53 and ACM certificate"
+  type        = string
+}
+
+variable "hosted_zone_id" {
+  description = "Hosted Zone ID for Route 53"
+  type        = string
+}
