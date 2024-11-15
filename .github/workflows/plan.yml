@@ -36,7 +36,8 @@ jobs:
         run: terraform init -no-color -input=false
 
       - name: Terraform Plan
-        run: terraform plan -no-color \
-          -var="certificate_arn=${{ secrets.CERTIFICATE_ARN }}" \
-          -var="domain_name=infra-owen-morgan.com" \
-          -var="hosted_zone_id=Z09823381091ASFSLUHFE"
+        run: |
+          terraform plan -no-color \
+            -var="certificate_arn=${{ secrets.CERTIFICATE_ARN }}" \
+            -var="domain_name=infra-owen-morgan.com" \
+            -var="hosted_zone_id=Z09823381091ASFSLUHFE"
