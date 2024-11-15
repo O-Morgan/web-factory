@@ -1,5 +1,5 @@
 variable "vpc_cidr" {
-  description = "The CIDR block for the VPC"
+  description = "CIDR block for the VPC"
   type        = string
 }
 
@@ -44,7 +44,7 @@ variable "web_server_port" {
 }
 
 variable "domain_name" {
-  description = "Domain name for Route 53 and ACM certificate"
+  description = "Domain name for Route 53"
   type        = string
 }
 
@@ -52,3 +52,4 @@ variable "hosted_zone_id" {
   description = "Hosted Zone ID for Route 53"
   type        = string
 }
+
