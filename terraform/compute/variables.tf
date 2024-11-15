@@ -1,3 +1,4 @@
+# Compute Variables
 variable "vpc_id" {
   description = "The ID of the VPC"
   type        = string
@@ -19,10 +20,9 @@ variable "alb_security_group_id" {
 }
 
 variable "web_security_group_id" {
-  description = "Security group ID for the web server"
+  description = "Security group ID for the Web Server"
   type        = string
 }
-
 
 variable "instance_type" {
   description = "Instance type for EC2 instances"
@@ -35,16 +35,11 @@ variable "ami_id" {
 }
 
 variable "min_instance_count" {
-  description = "Minimum number of instances in the ASG"
+  description = "Minimum number of instances in the Auto Scaling group"
   type        = number
 }
 
 variable "max_instance_count" {
-  description = "Maximum number of instances in the ASG"
+  description = "Maximum number of instances in the Auto Scaling group"
   type        = number
-}
-
-variable "certificate_arn" {
-  description = "ARN of the ACM certificate"
-  type        = string
 }
