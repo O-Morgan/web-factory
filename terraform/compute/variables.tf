@@ -31,19 +31,23 @@ variable "certificate_arn" {
 variable "instance_type" {
   description = "Instance type for EC2 instances"
   type        = string
+  default     = t2.micro
 }
 
 variable "ami_id" {
   description = "AMI ID for EC2 instances"
   type        = string
+  default     = "ami-0e8d228ad90af673b"
 }
 
 variable "min_instance_count" {
   description = "Minimum number of EC2 instances"
   type        = number
+  default     = 2
 }
 
 variable "max_instance_count" {
   description = "Maximum number of EC2 instances"
   type        = number
+  default     = 4
 }

@@ -54,11 +54,13 @@ variable "https_port" {
 variable "allowed_http_cidr" {
   description = "CIDR block allowed for HTTP traffic"
   type        = string
+  default     = "0.0.0.0/0"
 }
 
 variable "allowed_https_cidr" {
   description = "CIDR block allowed for HTTPS traffic"
   type        = string
+  default     = "0.0.0.0/0"
 }
 
 variable "web_server_port" {
