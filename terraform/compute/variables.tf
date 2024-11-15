@@ -47,3 +47,8 @@ variable "max_instance_count" {
   description = "Maximum number of EC2 instances"
   type        = number
 }
+
+variable "certificate_arn" {
+  description = "ARN of the ACM certificate"
+  type        = string
+}

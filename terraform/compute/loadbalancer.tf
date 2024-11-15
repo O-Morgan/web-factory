@@ -1,4 +1,3 @@
-# Application Load Balancer
 resource "aws_lb" "wf_alb" {
   name               = "wf-alb"
   internal           = false
@@ -6,15 +5,11 @@ resource "aws_lb" "wf_alb" {
   security_groups    = [var.alb_security_group_id]
   subnets            = var.public_subnet_ids
 
-  enable_deletion_protection = false
-  drop_invalid_header_fields = true
-
   tags = {
     Name = "WF_ALB"
   }
 }
 
-# Target Group for Load Balancer
 resource "aws_lb_target_group" "wf_alb_target_group" {
   name     = "wf-alb-target-group"
   port     = 80
@@ -29,13 +24,8 @@ resource "aws_lb_target_group" "wf_alb_target_group" {
     unhealthy_threshold = 3
     protocol            = "HTTP"
   }
-
-  tags = {
-    Name = "WF_ALB_Target_Group"
-  }
 }
 
-# HTTP Listener to Redirect to HTTPS
 resource "aws_lb_listener" "https_listener" {
   load_balancer_arn = aws_lb.wf_alb.arn
   port              = 443
@@ -47,8 +37,6 @@ resource "aws_lb_listener" "https_listener" {
     type             = "forward"
     target_group_arn = aws_lb_target_group.wf_alb_target_group.arn
   }
-
-  depends_on = [aws_acm_certificate_validation.wf_certificate_validation]
 }
 
 resource "aws_lb_listener" "http_listener" {
@@ -64,4 +52,14 @@ resource "aws_lb_listener" "http_listener" {
       status_code = "HTTP_301"
     }
   }
+}
+
+output "alb_dns_name" {
+  description = "DNS name of the Application Load Balancer"
+  value       = aws_lb.wf_alb.dns_name
+}
+
+output "alb_zone_id" {
+  description = "Zone ID of the Application Load Balancer"
+  value       = aws_lb.wf_alb.zone_id
 }
