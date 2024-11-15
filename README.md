@@ -164,3 +164,4 @@ update
 fmt all tf files
 terraform fmt -recursive
 
+test
