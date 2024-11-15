@@ -76,7 +76,9 @@ variable "instance_type" {
 variable "ami_id" {
   description = "AMI ID for EC2 instances"
   type        = string
+  default     = "ami-0e8d228ad90af673b"
 }
+
 
 variable "min_instance_count" {
   description = "Minimum number of instances in the Auto Scaling group"
