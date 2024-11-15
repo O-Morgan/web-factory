@@ -4,8 +4,7 @@ resource "aws_acm_certificate" "wf_certificate" {
   subject_alternative_names = ["www.${var.domain_name}"]
 
   tags = {
-    Name        = "WF_ACM_Certificate"
-    Environment = "production"
+    Name = "WF_ACM_Certificate"
   }
 }
 

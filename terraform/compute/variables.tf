@@ -19,12 +19,12 @@ variable "alb_security_group_id" {
 }
 
 variable "web_security_group_id" {
-  description = "Security group ID for web servers"
+  description = "Security group ID for the web server"
   type        = string
 }
 
 variable "certificate_arn" {
-  description = "The ARN of the ACM certificate"
+  description = "Certificate ARN for ALB HTTPS"
   type        = string
 }
 
@@ -39,12 +39,12 @@ variable "ami_id" {
 }
 
 variable "min_instance_count" {
-  description = "Minimum number of EC2 instances"
+  description = "Minimum number of instances in the ASG"
   type        = number
 }
 
 variable "max_instance_count" {
-  description = "Maximum number of EC2 instances"
+  description = "Maximum number of instances in the ASG"
   type        = number
 }
 
