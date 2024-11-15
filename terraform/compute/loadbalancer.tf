@@ -35,22 +35,22 @@ resource "aws_lb_target_group" "wf_alb_target_group" {
   }
 }
 
-# HTTPS Listener
+# HTTP Listener to Redirect to HTTPS
 resource "aws_lb_listener" "https_listener" {
   load_balancer_arn = aws_lb.wf_alb.arn
   port              = 443
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-TLS-1-2-2017-01"
-  certificate_arn   = var.certificate_arn # Referencing the existing variable
+  certificate_arn   = var.certificate_arn
 
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.wf_alb_target_group.arn
   }
+
+  depends_on = [aws_acm_certificate_validation.wf_certificate_validation]
 }
 
-
-# HTTP Listener to Redirect to HTTPS
 resource "aws_lb_listener" "http_listener" {
   load_balancer_arn = aws_lb.wf_alb.arn
   port              = 80
