@@ -26,6 +26,6 @@ resource "aws_acm_certificate_validation" "wf_certificate_validation" {
 }
 
 output "certificate_arn" {
-  description = "The ARN of the validated ACM certificate for HTTPS"
+  description = "The ARN of the validated ACM certificate"
   value       = aws_acm_certificate.wf_certificate.arn
 }
