@@ -1,15 +1,15 @@
 variable "vpc_id" {
-  description = "The ID of the VPC to use"
+  description = "The ID of the VPC"
   type        = string
 }
 
 variable "public_subnet_ids" {
-  description = "List of public subnet IDs for ALB"
+  description = "List of public subnet IDs"
   type        = list(string)
 }
 
 variable "private_subnet_ids" {
-  description = "List of private subnet IDs for EC2 instances"
+  description = "List of private subnet IDs"
   type        = list(string)
 }
 
@@ -19,7 +19,7 @@ variable "alb_security_group_id" {
 }
 
 variable "web_security_group_id" {
-  description = "Security group ID for web servers"
+  description = "Security group ID for the Web Server"
   type        = string
 }
 
@@ -49,7 +49,7 @@ variable "max_instance_count" {
 }
 
 variable "domain_name" {
-  description = "Primary domain name for Route 53 and ACM certificate"
+  description = "Domain name for Route 53 and ACM certificate"
   type        = string
 }
 

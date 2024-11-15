@@ -11,13 +11,7 @@ module "networking" {
   allowed_http_cidr    = var.allowed_http_cidr
   allowed_https_cidr   = var.allowed_https_cidr
   web_server_port      = var.web_server_port
-
-  domain_name    = var.domain_name
-  alb_dns_name   = module.compute.alb_dns_name
-  hosted_zone_id = var.hosted_zone_id
-  alb_zone_id    = module.compute.alb_zone_id
 }
-
 
 module "compute" {
   source                = "./compute"
@@ -26,7 +20,8 @@ module "compute" {
   private_subnet_ids    = module.networking.wf_private_subnet_ids
   alb_security_group_id = module.networking.wf_alb_sg_id
   web_security_group_id = module.networking.wf_web_sg_id
-  certificate_arn       = var.certificate_arn
+
+  certificate_arn = var.certificate_arn
 
   instance_type      = var.instance_type
   ami_id             = var.ami_id
@@ -35,4 +30,5 @@ module "compute" {
   domain_name        = var.domain_name
   hosted_zone_id     = var.hosted_zone_id
 }
+
 
