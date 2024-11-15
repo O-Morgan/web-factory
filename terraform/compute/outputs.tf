@@ -10,6 +10,6 @@ output "alb_zone_id" {
 
 # compute/outputs.tf
 output "certificate_arn" {
-  description = "The ARN of the validated ACM certificate for use with ALB"
+  description = "The ARN of the ACM certificate for HTTPS"
   value       = aws_acm_certificate.wf_certificate.arn
 }

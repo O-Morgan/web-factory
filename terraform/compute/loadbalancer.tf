@@ -41,13 +41,14 @@ resource "aws_lb_listener" "https_listener" {
   port              = 443
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-TLS-1-2-2017-01"
-  certificate_arn   = var.certificate_arn
+  certificate_arn   = var.certificate_arn # Referencing the existing variable
 
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.wf_alb_target_group.arn
   }
 }
+
 
 # HTTP Listener to Redirect to HTTPS
 resource "aws_lb_listener" "http_listener" {
