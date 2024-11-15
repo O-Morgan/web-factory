@@ -1,41 +1,70 @@
-#network var
-
-output "wf_vpc_id" {
-  description = "The ID of the VPC"
-  value       = aws_vpc.wf_main_vpc.id
+variable "vpc_cidr" {
+  description = "The CIDR block for the VPC"
+  type        = string
 }
 
-output "wf_public_subnet_ids" {
-  description = "List of public subnet IDs"
-  value       = [aws_subnet.wf_public_subnet_1.id, aws_subnet.wf_public_subnet_2.id]
+variable "public_subnet_cidrs" {
+  description = "List of CIDR blocks for public subnets"
+  type        = list(string)
 }
 
-output "wf_private_subnet_ids" {
-  description = "List of private subnet IDs"
-  value       = [aws_subnet.wf_private_subnet_1.id, aws_subnet.wf_private_subnet_2.id]
+variable "private_subnet_cidrs" {
+  description = "List of CIDR blocks for private subnets"
+  type        = list(string)
 }
 
-output "wf_alb_sg_id" {
-  description = "Security group ID for the ALB"
-  value       = aws_security_group.wf_alb_sg.id
+variable "availability_zones" {
+  description = "Availability zones for subnets"
+  type        = list(string)
 }
 
-output "wf_web_sg_id" {
-  description = "Security group ID for the Web Server"
-  value       = aws_security_group.wf_web_sg.id
+variable "http_port" {
+  description = "HTTP port for ALB"
+  type        = number
 }
 
-output "alb_dns_name" {
+variable "https_port" {
+  description = "HTTPS port for ALB"
+  type        = number
+}
+
+variable "allowed_http_cidr" {
+  description = "CIDR block allowed for HTTP traffic"
+  type        = string
+}
+
+variable "allowed_https_cidr" {
+  description = "CIDR block allowed for HTTPS traffic"
+  type        = string
+}
+
+variable "web_server_port" {
+  description = "Port for web server traffic from ALB"
+  type        = number
+}
+
+variable "domain_name" {
+  description = "Primary domain name for Route 53 and ACM certificate (e.g., infra-owen-morgan.com)"
+  type        = string
+}
+
+variable "hosted_zone_id" {
+  description = "Hosted Zone ID in Route 53 for managing DNS records"
+  type        = string
+}
+
+variable "alb_dns_name" {
   description = "DNS name of the Application Load Balancer"
-  value       = aws_lb.wf_alb.dns_name
+  type        = string
 }
 
-output "alb_zone_id" {
+variable "alb_zone_id" {
   description = "Zone ID of the Application Load Balancer"
-  value       = aws_lb.wf_alb.zone_id
+  type        = string
 }
 
-output "certificate_arn" {
-  description = "The ARN of the ACM certificate"
-  value       = aws_acm_certificate.wf_certificate.arn
+variable "certificate_arn" {
+  description = "Certificate ARN for SSL (if reusing an existing certificate)"
+  type        = string
+  default     = ""
 }
