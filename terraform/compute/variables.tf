@@ -1,36 +1,31 @@
-# compute/variables.tf
+# compute var
 
-variable "instance_type" {
-  description = "Instance type for EC2 instances"
+variable "vpc_id" {
+  description = "VPC ID for the compute module"
   type        = string
 }
 
-variable "ami_id" {
-  description = "AMI ID for EC2 instances"
+variable "public_subnet_ids" {
+  description = "List of public subnet IDs for resources"
+  type        = list(string)
+}
+
+variable "private_subnet_ids" {
+  description = "List of private subnet IDs for resources"
+  type        = list(string)
+}
+
+variable "alb_security_group_id" {
+  description = "Security group ID for the ALB"
   type        = string
 }
 
-variable "min_instance_count" {
-  description = "Minimum number of instances in the Auto Scaling group"
-  type        = number
-}
-
-variable "max_instance_count" {
-  description = "Maximum number of instances in the Auto Scaling group"
-  type        = number
-}
-
-variable "domain_name" {
-  description = "Primary domain name for Route 53 and ACM certificate"
-  type        = string
-}
-
-variable "hosted_zone_id" {
-  description = "Hosted Zone ID for Route 53"
+variable "web_security_group_id" {
+  description = "Security group ID for Web Server"
   type        = string
 }
 
 variable "certificate_arn" {
-  description = "Certificate ARN for SSL (if reusing an existing certificate)"
+  description = "ACM Certificate ARN for ALB Listener"
   type        = string
 }
