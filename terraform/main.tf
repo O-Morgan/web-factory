@@ -9,8 +9,8 @@ module "networking" {
   allowed_http_cidr    = var.allowed_http_cidr
   allowed_https_cidr   = var.allowed_https_cidr
   web_server_port      = var.web_server_port
-  domain_name          = var.domain_name       
-  hosted_zone_id       = var.hosted_zone_id    
+  domain_name          = var.domain_name
+  hosted_zone_id       = var.hosted_zone_id
 }
 
 
