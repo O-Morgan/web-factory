@@ -1,5 +1,3 @@
-#certificate
-
 resource "aws_acm_certificate" "wf_certificate" {
   domain_name               = var.domain_name
   validation_method         = "DNS"
@@ -23,9 +21,4 @@ resource "aws_route53_record" "acm_validation" {
 resource "aws_acm_certificate_validation" "wf_certificate_validation" {
   certificate_arn         = aws_acm_certificate.wf_certificate.arn
   validation_record_fqdns = [for record in aws_route53_record.acm_validation : record.fqdn]
-}
-
-output "certificate_arn" {
-  description = "The ARN of the validated ACM certificate"
-  value       = aws_acm_certificate.wf_certificate.arn
 }

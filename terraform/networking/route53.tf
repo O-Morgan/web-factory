@@ -1,6 +1,3 @@
-# compute/route53.tf
-
-# Route 53 record for www subdomain, pointing to ALB
 resource "aws_route53_record" "www" {
   zone_id = var.hosted_zone_id
   name    = "www"
@@ -12,7 +9,6 @@ resource "aws_route53_record" "www" {
   }
 }
 
-# Route 53 record for root domain, pointing to ALB
 resource "aws_route53_record" "root" {
   zone_id = var.hosted_zone_id
   name    = ""
