@@ -8,3 +8,7 @@ output "alb_zone_id" {
   value       = aws_lb.wf_alb.zone_id
 }
 
+output "certificate_arn" {
+  description = "The ARN of the ACM certificate"
+  value       = aws_acm_certificate.wf_certificate.arn
+}

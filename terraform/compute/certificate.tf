@@ -1,3 +1,5 @@
+#certificate
+
 resource "aws_acm_certificate" "wf_certificate" {
   domain_name               = var.domain_name
   validation_method         = "DNS"
