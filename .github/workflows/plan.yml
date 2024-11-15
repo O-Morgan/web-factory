@@ -36,4 +36,7 @@ jobs:
         run: terraform init -no-color -input=false
 
       - name: Terraform Plan
-        run: terraform plan -no-color
+        env:
+          CERTIFICATE_ARN: ${{ secrets.MY_CERTIFICATE_ID }}
+        run: terraform plan -var="certificate_arn=$CERTIFICATE_ARN" -no-color
+

@@ -24,6 +24,7 @@ output "wf_web_sg_id" {
 }
 
 output "certificate_arn" {
-  description = "The ARN of the validated ACM certificate"
+  description = "The ARN of the existing ACM certificate for HTTPS"
   value       = aws_acm_certificate.wf_certificate.arn
 }
+
