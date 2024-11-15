@@ -20,7 +20,7 @@ module "compute" {
   private_subnet_ids    = module.networking.wf_private_subnet_ids
   alb_security_group_id = module.networking.wf_alb_sg_id
   web_security_group_id = module.networking.wf_web_sg_id
-  certificate_arn       = module.networking.certificate_arn # Dynamically generated certificate
+  certificate_arn       = var.certificate_arn
 
   instance_type      = var.instance_type
   ami_id             = var.ami_id
@@ -29,3 +29,4 @@ module "compute" {
   domain_name        = var.domain_name
   hosted_zone_id     = var.hosted_zone_id
 }
+
