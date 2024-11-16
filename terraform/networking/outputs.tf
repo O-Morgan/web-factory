@@ -1,7 +1,3 @@
-output "certificate_arn" {
-  description = "The ARN of the ACM certificate"
-  value       = aws_acm_certificate.wf_certificate.arn
-}
 output "wf_vpc_id" {
   description = "The ID of the VPC"
   value       = aws_vpc.wf_main_vpc.id
