@@ -89,12 +89,7 @@ variable "max_instance_count" {
   default     = 4
 }
 
-variable "alb_dns_name" {
-  description = "DNS name of the ALB"
-  type        = string
-}
-
-variable "alb_zone_id" {
-  description = "Zone ID of the ALB"
+variable "certificate_arn" {
+  description = "The ARN of the ACM certificate"
   type        = string
 }
