@@ -28,6 +28,4 @@ module "dns" {
   source         = "./dns"
   domain_name    = var.domain_name
   hosted_zone_id = var.hosted_zone_id
-  alb_dns_name   = module.compute.alb_dns_name
-  alb_zone_id    = module.compute.alb_zone_id
 }
