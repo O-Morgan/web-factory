@@ -1,3 +1,4 @@
+# Networking Variables
 variable "vpc_cidr" {
   description = "CIDR block for the VPC"
   type        = string
@@ -42,14 +43,3 @@ variable "web_server_port" {
   description = "Port for web server traffic from ALB"
   type        = number
 }
-
-variable "domain_name" {
-  description = "Domain name for Route 53"
-  type        = string
-}
-
-variable "hosted_zone_id" {
-  description = "Hosted Zone ID for Route 53"
-  type        = string
-}
-
