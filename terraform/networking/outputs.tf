@@ -23,8 +23,4 @@ output "wf_web_sg_id" {
   value       = aws_security_group.wf_web_sg.id
 }
 
-output "certificate_arn" {
-  description = "The ARN of the ACM certificate"
-  value       = module.dns.certificate_arn
-}
 
