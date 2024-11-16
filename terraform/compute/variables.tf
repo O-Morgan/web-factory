@@ -43,3 +43,8 @@ variable "max_instance_count" {
   description = "Maximum number of instances in the Auto Scaling group"
   type        = number
 }
+
+variable "certificate_arn" {
+  description = "The ARN of the ACM certificate"
+  type        = string
+}

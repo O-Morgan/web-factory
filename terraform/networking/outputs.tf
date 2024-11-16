@@ -1,7 +1,3 @@
-output "certificate_arn" {
-  description = "The ARN of the ACM certificate"
-  value       = aws_acm_certificate.wf_certificate.arn
-}
 output "wf_vpc_id" {
   description = "The ID of the VPC"
   value       = aws_vpc.wf_main_vpc.id
@@ -26,3 +22,9 @@ output "wf_web_sg_id" {
   description = "Security group ID for the Web Server"
   value       = aws_security_group.wf_web_sg.id
 }
+
+output "certificate_arn" {
+  description = "The ARN of the ACM certificate"
+  value       = module.dns.certificate_arn
+}
+

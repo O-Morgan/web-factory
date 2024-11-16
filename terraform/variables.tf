@@ -1,4 +1,10 @@
 # Root Variables with Default Values
+variable "region" {
+  description = "AWS region for the provider"
+  type        = string
+  default     = "eu-west-2"
+}
+
 variable "vpc_cidr" {
   description = "CIDR block for the VPC"
   type        = string
