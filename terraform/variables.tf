@@ -88,3 +88,8 @@ variable "max_instance_count" {
   type        = number
   default     = 4
 }
+
+variable "certificate_arn" {
+  description = "The ARN of the ACM certificate"
+  type        = string
+}
