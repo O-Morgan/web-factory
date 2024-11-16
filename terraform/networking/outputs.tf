@@ -24,5 +24,7 @@ output "wf_web_sg_id" {
 }
 
 output "certificate_arn" {
-  value = module.dns.certificate_arn
+  description = "The ARN of the ACM certificate"
+  value       = module.dns.certificate_arn
 }
+
