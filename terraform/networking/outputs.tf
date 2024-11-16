@@ -26,3 +26,7 @@ output "wf_web_sg_id" {
   description = "Security group ID for the Web Server"
   value       = aws_security_group.wf_web_sg.id
 }
+
+output "certificate_arn" {
+  value = module.dns.certificate_arn
+}
